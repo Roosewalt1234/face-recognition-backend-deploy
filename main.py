@@ -151,7 +151,7 @@ def train(req: TrainRequest):
             if gray is None:
                 continue
             roi = recognizer.detect_face_roi(gray)
-            if roi is None:
+            if roi is None or (hasattr(roi, 'size') and roi.size == 0):
                 roi = gray
             roi = cv2.resize(roi, (200, 200))
             faces.append(roi)

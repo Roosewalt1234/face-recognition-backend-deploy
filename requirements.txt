@@ -3,6 +3,8 @@ uvicorn[standard]
 supabase
 opencv-python-headless
 numpy
+requests
 python-dotenv
 setuptools
 wheel
+

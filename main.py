@@ -20,6 +20,14 @@ from app.recognizer import LBPHRecognizer
 # Initialize
 # ──────────────────────────────
 app = FastAPI(title="Face Recognition Attendance Service", version="1.0")
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 recognizer = LBPHRecognizer()
 sb = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_ROLE_KEY)

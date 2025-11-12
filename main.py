@@ -150,7 +150,9 @@ def train(req: TrainRequest):
             gray = fetch_image_as_gray(path)
             if gray is None:
                 continue
-            roi = recognizer.detect_face_roi(gray) or gray
+            roi = recognizer.detect_face_roi(gray)
+            if roi is None:
+                roi = gray
             roi = cv2.resize(roi, (200, 200))
             faces.append(roi)
             labels.append(label_id)
